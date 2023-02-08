@@ -161,9 +161,12 @@
                               </thead>
                 
                              <tbody>
+                             <?php $n = 1 ?>   
                                   <?php foreach ($users as $user): ?>
+                                    <?php  if($user->role == 1) : ?> 
                               <tr>
-                              <td><?= $this->Number->format($user->id) ?></td>
+                               <td><?= $this->Number->format($n) ?></td>
+                              <!-- <td><?= $this->Number->format($user->id) ?></td> -->
 
                               <td><?= h($user->name) ?></td> 
                                <td><?= h($user->email) ?></td>
@@ -181,6 +184,8 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                          </td>
                      </tr>
+                     <?php endif; ?>
+                     <?php $n++; ?>
                    <?php endforeach; ?>
                                     </tbody>
                                 </table>

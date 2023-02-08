@@ -44,8 +44,13 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <?php echo $this->Html->link(__('Home'), ['controller'=>'Users', 'action' => 'home'],['class'=>'nav-item nav-link active']) ?>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                     <?php echo $this->Html->link(__('Login/Logout'), ['controller'=>'Users', 'action' => 'logout'],['class'=>'nav-item nav-link']) ?>
+                        <?php if($result == null){  
+                         echo $this->Html->link(__('Login'), ['controller'=>'Users', 'action' => 'login'],['class'=>'nav-item nav-link']);
+                      }else{
+                        echo $this->Html->link(__('Logout'), ['controller'=>'Users', 'action' => 'logout'],['class'=>'nav-item nav-link']);
+                         
+                      }
+                      ?>
                     </div>
                 </div>
             </nav>

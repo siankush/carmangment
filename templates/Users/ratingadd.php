@@ -19,8 +19,8 @@
             <fieldset>
                 <legend><?= __('Add Car Review') ?></legend>
                 <?php
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('car_id', ['options' => $cars]);
+                    // echo $this->Form->control('user_id', ['options' => $users]);
+                    // echo $this->Form->control('car_id', ['options' => $cars]);
                     echo '<label>Rating</label>';
                     echo $this->Form->select(
                         'rating',

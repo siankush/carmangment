@@ -31,7 +31,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?> -->
+    <?= $this->Html->css(['cake']) ?>
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <?= $this->Html->css('admincss/styles') ?>

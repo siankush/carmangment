@@ -27,11 +27,17 @@ class UsersController extends AppController
         $this->Model = $this->loadModel('CarReviews');
         $this->Model = $this->loadModel('Brands');
         if ($this->Authentication->getIdentity()) {
-            $auth = true;
+            $user1 = $this->Authentication->getIdentity();
+            $uid=$user1->id;
+            $result = $this->Users->get($uid,[
+                'contain'=>[],
+            ]);
         } else {
             $auth = false;
+            $user1 = null;
+            $result = null;
         }
-        $this->set(compact('auth'));
+        $this->set(compact('user1','result'));
     }
     
     public function index()
@@ -139,7 +145,7 @@ class UsersController extends AppController
     parent::beforeFilter($event);
     // Configure the login action to not require authentication, preventing
     // the infinite redirect loop issue
-    $this->Authentication->addUnauthenticatedActions(['login']);
+    $this->Authentication->addUnauthenticatedActions(['login','usercarview']);
 }
 
    public function login()
@@ -516,23 +522,53 @@ public function deleterate($id = null){
 
     public function ratingadd($id = null){
         $user = $this->Authentication->getIdentity();
-        $uid = $user->id;
-        $username = $this->Users->get($uid);
+        $user_id = $user->id;
+        // $user = $this->Authentication->getIdentity();
+        // $uid = $user->id;
+        // $username = $this->Users->get($uid);
+        // $carReview = $this->CarReviews->newEmptyEntity();
+        // if ($this->request->is('post')) {
+        //     $carReview['name']=$username->name;
+        //     // dd($this->request->getData());
+        //     $carReview = $this->CarReviews->patchEntity($carReview, $this->request->getData());
+        //     if ($this->CarReviews->save($carReview)) {
+        //         $this->Flash->success(__('The car review has been saved.'));
+
+        //         return $this->redirect(['controller'=>'users','action' => 'usercarview',$id]);
+        //     }
+        //     $this->Flash->error(__('The car review could not be saved. Please, try again.'));
+        // }
+        // $users = $this->CarReviews->Users->find('list', ['limit' => 200])->all();
+        // $cars = $this->CarReviews->Cars->find('list', ['limit' => 200])->all();
+        // $this->set(compact('carReview', 'users', 'cars'));
+
         $carReview = $this->CarReviews->newEmptyEntity();
         if ($this->request->is('post')) {
-            $carReview['name']=$username->name;
-            // dd($this->request->getData());
+            $result = $this->CarReviews->find('all')->where(['car_id' => $id,'user_id'=>$user_id])->first();
+            if ($result) {
+                $rating = $this->request->getData('rating');
+                $review = $this->request->getData('review');
+                $result->rating = $rating;
+                $result->review = $review;
+                if ($this->CarReviews->save($result)) {
+                    return $this->redirect(['action' => 'usercarview', $id]);
+                }
+            } else {
             $carReview = $this->CarReviews->patchEntity($carReview, $this->request->getData());
+            $carReview['user_id']=$user->id;
+            $carReview['name']=$user->name;
+            $carReview['car_id']=$id;
+            // dd($carReview['name']=$username->name);
             if ($this->CarReviews->save($carReview)) {
+
                 $this->Flash->success(__('The car review has been saved.'));
 
                 return $this->redirect(['controller'=>'users','action' => 'usercarview',$id]);
             }
             $this->Flash->error(__('The car review could not be saved. Please, try again.'));
-        }
-        $users = $this->CarReviews->Users->find('list', ['limit' => 200])->all();
-        $cars = $this->CarReviews->Cars->find('list', ['limit' => 200])->all();
-        $this->set(compact('carReview', 'users', 'cars'));
+            }
+        }  
+        $this->set(compact('carReview'));
 
     }
 

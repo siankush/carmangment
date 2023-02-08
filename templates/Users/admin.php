@@ -169,9 +169,11 @@
                               </thead>
                 
                              <tbody>
+                             <?php $n = 1 ?>
                              <?php foreach ($cars as $car): ?>
                               <tr>
-                               <td><?= $this->Number->format($car->id) ?></td>
+                               <td><?= $this->Number->format($n) ?></td>
+                               <!-- <td><?= $this->Number->format($car->id) ?></td> -->
                                <td><?= h($car->name) ?></td>
                                <td><?= $car->has('brand') ? $this->Html->link($car->brand->name, ['controller' => 'Brands', 'action' => 'view', $car->brand->id],['class'=>'style']) : '' ?></td>
                                <td><?= h($car->model) ?></td>
@@ -183,10 +185,10 @@
                     
                               <?php  if($car->status == 1) : ?>
 
-                                <?= $this->Form->postLink(__('Active'),['action' => 'userstatus', $car->id, $car->status], ['confirm' => __('Are you sure you want to Active # {0}?', $car->id)]) ?>
+                                <?= $this->Form->postLink(__('Active'),['action' => 'userstatus', $car->id, $car->status], ['confirm' => __('Are you sure you want to Inactive ?', $car->id)]) ?>
                               <?php else : ?>
 
-                                <?= $this->Form->postLink(__('Inactive'), ['action' => 'userstatus', $car->id, $car->status], ['confirm' => __('Are you sure you want to Inactive # {0}?', $car->id)]) ?>
+                                <?= $this->Form->postLink(__('Inactive'), ['action' => 'userstatus', $car->id, $car->status], ['confirm' => __('Are you sure you want to Active ?', $car->id)]) ?>
                                <?php endif; ?> 
 
 
@@ -197,6 +199,7 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'cardelete', $car->id], ['confirm' => __('Are you sure you want to delete # {0}?', $car->id)]) ?>
                          </td>
                      </tr>
+                     <?php $n++ ?>
                    <?php endforeach; ?>
                                     </tbody>
                                 </table>

@@ -57,7 +57,7 @@
            <table> 
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
+                    <!-- <th><?= $this->Paginator->sort('id') ?></th> -->
              
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('rating') ?></th>
@@ -68,7 +68,7 @@
             <tbody>
                 <?php foreach ($sss as $carReview): ?>
                 <tr>
-                    <td><?= $this->Number->format($carReview->id) ?></td>
+                    <!-- <td><?= $this->Number->format($carReview->id) ?></td> -->
                   
                   
                     <td><?= h($carReview->name) ?></td>

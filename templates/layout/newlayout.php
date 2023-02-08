@@ -38,7 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
-    <!-- <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?> -->
+    <?= $this->Html->css(['cake']) ?>
     <link href="img/favicon.ico" rel="icon">
     <?= $this->Html->css(['lib/owlcarousel/assets/owl.carousel.min','lib/tempusdominus/css/tempusdominus-bootstrap-4.min','css/bootstrap.min', 'css/style']) ?>
     <?= $this->Html->script(['js/main','lib/easing/easing.min','lib/waypoints/waypoints.min','lib/owlcarousel/owl.carousel.min','lib/tempusdominus/js/moment.min','lib/tempusdominus/js/moment-timezone.min.js','lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js']) ?>

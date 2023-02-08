@@ -79,8 +79,6 @@ th {
     align-items: center;
     justify-content: space-between;
     max-width: 112rem;
-    padding: 2rem;
-    margin: 0 auto 2rem;
 }
 .top-nav-title a {
     font-size: 2.4rem;
@@ -130,6 +128,7 @@ th {
     background: #e3fcec;
     color: #1f9d55;
     border-color: #51d88a;
+    text-align: center;
 }
 .message.warning {
     background: #fffabc;

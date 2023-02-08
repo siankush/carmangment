@@ -114,6 +114,7 @@
             <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
             <div class="row">
             <?php foreach ($cars as $car): ?>
+                <?php  if($car->status == 1) : ?>   
                 <div class="col-lg-4 col-md-6 mb-2">
                     <div class="rent-item mb-4">
 
@@ -130,6 +131,7 @@
 
                     </div>
                 </div>
+                <?php endif; ?>
                 <?php endforeach; ?>
                 
             </div>
