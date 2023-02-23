@@ -52,3 +52,5 @@ Stack Trace:
 2023-02-08 03:59:56 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2023-02-08 04:00:09 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2023-02-08 06:11:37 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-02-22 11:38:58 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2023-02-22 11:40:23 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.

@@ -122,7 +122,7 @@
             <fieldset>
 
                 <?php
-                    echo $this->Form->control('user_id', ['options' => $users,'class'=>'form-control p-2']);
+                    // echo $this->Form->control('user_id', ['options' => $users,'class'=>'form-control p-2']);
                     echo "<br></br>";
                     echo $this->Form->control('name',['required' => false, 'class'=>'form-control p-2']);
                     echo "<br></br>";
