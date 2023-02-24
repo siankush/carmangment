@@ -56,6 +56,9 @@ class CarsTable extends Table
         $this->hasMany('CarReviews', [
             'foreignKey' => 'car_id',
         ]);
+        $this->hasMany('Reaction', [
+            'foreignKey' => 'car_id',
+        ]);
     }
 
     /**

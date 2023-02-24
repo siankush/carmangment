@@ -54,6 +54,9 @@ class UsersTable extends Table
         $this->hasMany('Cars', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Reaction', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**

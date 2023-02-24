@@ -26,6 +26,7 @@ class UsersController extends AppController
         $this->Model = $this->loadModel('Cars');
         $this->Model = $this->loadModel('CarReviews');
         $this->Model = $this->loadModel('Brands');
+        $this->Model = $this->loadModel('Reaction');
         if ($this->Authentication->getIdentity()) {
             $user1 = $this->Authentication->getIdentity();
             $uid=$user1->id;
@@ -206,13 +207,9 @@ class UsersController extends AppController
    public function usercarview($id = null){
            
 
-    if ($this->Authentication->getIdentity()) {
-       
-    } else {
-        $role = 1;
-    }
+    
     $car = $this->Cars->get($id, [
-        'contain' => ['Users','Brands','CarReviews'],
+        'contain' => ['Brands','CarReviews'],
     ]);
   
     $sss = $this->CarReviews->find('all')->where(['car_id' => $id])->all();
@@ -240,11 +237,11 @@ class UsersController extends AppController
 
         // $cars = $this->paginate($this->Cars->find('all')->where(['active' => 1]));
         // $this->set(compact('cars'));
-        $this->paginate = [
-            'contain' => ['Users', 'Brands'],
-        ];
+     
 
-        $cars = $this->paginate($this->Cars);
+        $cars = $this->paginate($this->Cars,[
+            'contain' => ['Brands','Reaction'],
+        ]);
         $this->set(compact('cars'));
         
         // $cars = $this->paginate($this->Cars->find('all')->where(['status' => 1]));
@@ -291,11 +288,10 @@ public function deleterate($id = null){
         if ($user->role == 0) {
            
 
-            $this->paginate = [
-                'contain' => ['Users', 'Brands'],
-            ];
-
-            $cars = $this->paginate($this->Cars);
+            $cars = $this->paginate($this->Cars,[
+                'contain' => ['Brands'],
+            ]);
+        
             $this->set(compact('cars'));
 
             // $users = $this->paginate($this->Users);

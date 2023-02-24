@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Brand') ?></th>
-                    <td><?= $car->has('brand') ? $this->Html->link($car->brand->name, ['controller' => 'Brands', 'action' => 'view', $car->brand->id]) : '' ?></td>
+                    <td><?= h($car->brand->name) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Model') ?></th>

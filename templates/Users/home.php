@@ -114,7 +114,14 @@
             <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
             <div class="row">
             <?php foreach ($cars as $car): ?>
-                <?php  if($car->status == 1) : ?>   
+                <?php  if($car->status == 1) : ?> 
+                    <?php $a=0; $b=0;
+                foreach($car->reaction as $carss){
+                    
+                    $a = $a + $carss->upvote;
+                    $b = $b + $carss->downvote;
+                }
+                ?>  
                 <div class="col-lg-4 col-md-6 mb-2">
                     <div class="rent-item mb-4">
 
@@ -125,7 +132,11 @@
                         <h4 class="text-uppercase mb-4"><td><?= h($car->name) ?></td></h4>
                         <div class="d-flex justify-content-center mb-4">
                         <td><?= $car->has('brand') ? $this->Html->link($car->brand->name, ['controller' => 'Brands', 'action' => 'view', $car->brand->id],['class'=>'style']) : '' ?></td>
-
+                        
+                        <?= $this->Html->link(__('<i class="fa fa-thumbs-up" style="font-size:36px"></i>'), ['controller'=>'Reaction','action' => 'like', $car->id],['escape'=>false]) ?><?php echo $a;?>
+                        
+                        <?= $this->Html->link(__('<i class="fa fa-thumbs-down" style="font-size:36px"></i>'), ['controller'=>'Reaction','action' => 'dislike', $car->id],['escape'=>false]) ?><?php echo $b; ?>
+                        
                         </div>
                         <?= $this->Html->link(__('View'), ['action' => 'usercarview', $car->id]) ?>
 
